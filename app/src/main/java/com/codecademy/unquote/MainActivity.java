@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     int totalQuestions;
     ArrayList<Question> questions;
 
-    // TODO 3-A: Declare View member variables
+
     ImageView questionImageView;
     TextView questionTextView;
     TextView questionsRemainingTextView;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // TODO 2-G: Show app icon in ActionBar
+
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.ic_unquote_icon);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        // TODO 3-B: assign View member variables
+
         questionImageView = findViewById(R.id.iv_main_question_image);
         questionTextView = findViewById(R.id.tv_main_question_title);
         questionsRemainingTextView = findViewById(R.id.tv_main_questions_remaining);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         answer3Button = findViewById(R.id.btn_main_answer_3);
         submitButton = findViewById(R.id.btn_main_submit_answer);
 
-        // TODO 4-E: set onClickListener for each answer Button
+
         answer0Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         startNewGame();
     }
 
-    // TODO 3-F: displayQuestion(Question question) {...}
+
     public void displayQuestion(Question question){
 
         questionImageView.setImageResource(question.imageId);
@@ -105,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // TODO 3-C: displayQuestionsRemaining(int questionRemaining) {...}
+
     public void displayQuestionsRemaining(int questionsRemaining){
         questionsRemainingTextView.setText(questionsRemaining+"");
     }
 
-    // TODO 4-A: onAnswerSelected(int answerSelected) {...}
+
     void onAnswerSelected(int answerSelected){
         Question currentQuestion = questions.get(currentQuestionIndex);
         currentQuestion.playerAnswer = answerSelected;
@@ -145,13 +145,13 @@ public class MainActivity extends AppCompatActivity {
         }
         questions.remove(currentQuestion);
 
-        // TODO 3-D.i: Uncomment the line below after implementing displayQuestionsRemaining(int)
+
         displayQuestionsRemaining(questions.size());
 
         if (questions.size() == 0) {
             String gameOverMessage = getGameOverMessage(totalCorrect, totalQuestions);
 
-            // TODO 5-D: Show a popup instead
+
             AlertDialog.Builder gameOverDialogBuilder = new AlertDialog.Builder(MainActivity.this);
             gameOverDialogBuilder.setCancelable(false);
             gameOverDialogBuilder.setTitle("Game Over");
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             chooseNewQuestion();
 
-            // TODO 3-H.i: uncomment after implementing displayQuestion(Question)
+
             displayQuestion(getCurrentQuestion());
         }
     }
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     void startNewGame() {
         questions = new ArrayList<>();
 
-        // TODO 2-H: Provide actual drawables for each of these questions!
+
         Question question0 = new Question(R.drawable.img_quote_0, "pretty good advice, and perhaps a scientist did say it... who actually did?", "Albert Einstein", "Isaac Newton", "Rita Mae Brown", "Rosalind Franklin", 2);
         Question question1 = new Question(R.drawable.img_quote_1, "Was honest Abe honestly quoted this pithy bit of wisdom?", "Edward Stieglitz", "Maya Angelou", "Abraham Lincoln", "Ralph Waldo Emerson", 0);
         Question question2 = new Question(R.drawable.img_quote_2, "Easy advice to read, difficult advice to follow - who actually", "Martin Luther King Jr", "Mother Teresa", "Fred Rogers", "Oprah Winfrey", 1);
@@ -209,10 +209,10 @@ public class MainActivity extends AppCompatActivity {
 
         Question firstQuestion = chooseNewQuestion();
 
-        // TODO 3-D.ii: Uncomment the line below after implementing displayQuestionsRemaining(int)
+
         displayQuestionsRemaining(questions.size());
 
-        // TODO 3-H.ii: Uncomment after implementing displayQuestion(Question)
+        
         displayQuestion(firstQuestion);
     }
 
